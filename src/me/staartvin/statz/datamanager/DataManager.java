@@ -10,11 +10,19 @@ import me.staartvin.statz.database.datatype.Table;
 import me.staartvin.statz.datamanager.player.PlayerInfo;
 import me.staartvin.statz.datamanager.player.PlayerStat;
 import me.staartvin.statz.language.DescriptionMatcher;
-import net.md_5.bungee.api.chat.*;
+
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import net.md_5.bungee.api.chat.BaseComponent;
+import net.md_5.bungee.api.chat.ClickEvent;
+import net.md_5.bungee.api.chat.ComponentBuilder;
+import net.md_5.bungee.api.chat.HoverEvent;
 
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 import java.util.*;
 import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
@@ -295,44 +303,33 @@ public class DataManager {
         }
     }
 
-    public void sendStatisticsList(CommandSender sender, String playerName, UUID uuid, int pageNumber,
-                                   List<PlayerStat> list) {
+    public void sendStatisticsList(CommandSender sender, String playerName, UUID uuid, int pageNumber, List<PlayerStat> list) {
         List<String> messages = new ArrayList<>();
-        List<TextComponent> messagesSpigot = new ArrayList<>();
-
-        boolean canShowSpigotMessages =
-                plugin.getServer().getVersion().toLowerCase().contains("spigot") || plugin.getServer().getVersion().toLowerCase().contains("paper");
+        List<BaseComponent[]> messagesSpigot = new ArrayList<>();
+        boolean canShowSpigotMessages = sender instanceof Player;
 
         for (PlayerStat statType : list) {
-
-            // Skip data of players table
             if (statType.equals(PlayerStat.PLAYERS)) {
                 continue;
             }
 
             PlayerInfo info = plugin.getDataManager().getPlayerInfo(uuid, statType);
-
-            // Player is not loaded into cache yet, first load player data into cache.
             if (info == null) {
                 info = plugin.getDataManager().loadPlayerData(uuid, statType);
             }
 
-            // If data is empty, we have no data about the player and so skip it.
             if (info.getDataOfPlayerStat(statType).isEmpty()) {
                 continue;
             }
 
             String messageString = DescriptionMatcher.getTotalDescription(info, statType);
 
-            if (sender instanceof Player && canShowSpigotMessages) {
-                TextComponent spigotMessage = new TextComponent(messageString);
-
-                spigotMessage.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND,
-                        "/statz list " + playerName + " " + statType.toString()));
-                spigotMessage.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT,
-                        new ComponentBuilder("Click on me for more info about ")
-                                .append(statType.toString()).color(net.md_5.bungee.api.ChatColor.GOLD).create()));
-
+            if (canShowSpigotMessages) {
+                BaseComponent[] spigotMessage = new ComponentBuilder(messageString)
+                        .event(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/statz list " + playerName + " " + statType))
+                        .event(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("Click for more info about " + statType)
+                                .color(ChatColor.GOLD.asBungee()).create()))
+                        .create();
                 messagesSpigot.add(spigotMessage);
             } else {
                 messages.add(messageString);
@@ -340,60 +337,34 @@ public class DataManager {
         }
 
         int messagesPerPage = 8;
+        int pages = (int) Math.ceil((double) (canShowSpigotMessages ? messagesSpigot.size() : messages.size()) / messagesPerPage);
+        if (pageNumber >= pages || pageNumber < 0) pageNumber = 0;
 
-        int pages = 0;
-
-        if (sender instanceof Player && canShowSpigotMessages) {
-            pages = (int) Math.ceil(messagesSpigot.size() / (double) messagesPerPage);
-        } else {
-            pages = (int) Math.ceil(messages.size() / (double) messagesPerPage);
-        }
-
-        if (pageNumber > (pages - 1) || pageNumber < 0) {
-            pageNumber = 0;
-        }
-
-        sender.sendMessage(
-                ChatColor.YELLOW + "---------------- [Statz of " + playerName + "] ----------------");
+        sender.sendMessage(ChatColor.YELLOW + "---------------- [Statz of " + playerName + "] ----------------");
         for (int j = 0; j < messagesPerPage; j++) {
-            int index = (pageNumber == 0 ? j : (pageNumber * messagesPerPage) + j);
-
-            // Don't try to get other messages, as there are no others.
-            if (sender instanceof Player && canShowSpigotMessages) {
-                if (index >= messagesSpigot.size()) {
-                    break;
-                }
+            int index = (pageNumber * messagesPerPage) + j;
+            if (canShowSpigotMessages) {
+                if (index >= messagesSpigot.size()) break;
+                Player player = (Player) sender;
+                player.spigot().sendMessage(messagesSpigot.get(index));
             } else {
-                if (index >= messages.size()) {
-                    break;
-                }
-            }
-
-            if (sender instanceof Player && canShowSpigotMessages) {
-                Player p = (Player) sender;
-
-                p.spigot().sendMessage(messagesSpigot.get(index));
-            } else {
+                if (index >= messages.size()) break;
                 sender.sendMessage(messages.get(index));
             }
-
         }
 
-        // Create page clicker
-        BaseComponent[] pageClicker = new ComponentBuilder("<<< ").color(net.md_5.bungee.api.ChatColor.GOLD)
-                .event(new ClickEvent(ClickEvent.Action.RUN_COMMAND,
-                        "/statz list " + playerName + " " + (Math.max(pageNumber, 0))))
-                .append("Page ").color(net.md_5.bungee.api.ChatColor.DARK_AQUA).append(pages == 0 ?
-                        pageNumber + "" : pageNumber + 1 + "").color(net.md_5.bungee.api.ChatColor.GREEN)
-                .append(" of " + pages).color(net.md_5.bungee.api.ChatColor.DARK_AQUA).append(" >>>").color(net.md_5.bungee.api.ChatColor.GOLD)
-                .event(new ClickEvent(ClickEvent.Action.RUN_COMMAND,
-                        "/statz list " + playerName + " " + (Math.min(pageNumber + 2, pages))))
-                .create();
+        BaseComponent[] pageClicker = new ComponentBuilder("<<< ")
+                .color(ChatColor.GOLD.asBungee())
+                .event(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/statz list " + playerName + " " + Math.max(pageNumber, 0)))
+                .append("Page ", ComponentBuilder.FormatRetention.NONE).color(ChatColor.DARK_AQUA.asBungee())
+                .append(String.valueOf(pages == 0 ? pageNumber : pageNumber + 1), ComponentBuilder.FormatRetention.NONE).color(ChatColor.GREEN.asBungee())
+                .append(" of " + pages, ComponentBuilder.FormatRetention.NONE).color(ChatColor.DARK_AQUA.asBungee())
+                .append(" >>>", ComponentBuilder.FormatRetention.NONE).color(ChatColor.GOLD.asBungee())
+                .event(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/statz list " + playerName + " " + Math.min(pageNumber + 1, pages - 1))).create();
 
-        if (sender instanceof Player && canShowSpigotMessages) {
-            Player p = (Player) sender;
-
-            p.spigot().sendMessage(pageClicker);
+        if (canShowSpigotMessages) {
+            Player player = (Player) sender;
+            player.spigot().sendMessage(pageClicker);
         } else {
             sender.sendMessage(ChatColor.GOLD + "<<< " + ChatColor.DARK_AQUA + "Page " + ChatColor.GREEN
                     + (pageNumber + 1) + ChatColor.DARK_AQUA + " of " + pages + ChatColor.GOLD + " >>>");

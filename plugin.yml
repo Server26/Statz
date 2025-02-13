@@ -2,11 +2,8 @@ main: me.staartvin.statz.Statz
 name: Statz
 version: ${project.version}
 authors: [Staartvin]
-description: The one-and-all plugin to record and store stats about any player.
-softdepend: [ Vault, Stats, Votifier, Autorank, mcMMO, Factions, afkTerminator, OnTime, RoyalCommands,
-              UltimateCore, AdvancedAchievements, BattleLevels, Jobs, RPGme, uSkyBlock, WorldEdit, WorldGuard, AcidIsland,
-              ASkyBlock, GriefPrevention, Essentials, Quests, PlayerPoints, Votifier, CMI, UhcStats, Towny, McRPG,
-              PlaceholderAPI ]
+description: The one-and-all plugin to record and store stats about any player. SLS-version (Server26-Life-Support version).
+softdepend: [ Vault, WorldEdit, WorldGuard, GriefPrevention, PlaceholderAPI ]
 api-version: 1.14
 commands:
   statz:
