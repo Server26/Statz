@@ -18,200 +18,200 @@ import org.bukkit.configuration.file.FileConfiguration;
 public enum StatisticDescription {
 
     /**
-     * Joined the server {0} times.
+     * Joined the server &f{0}&9 times.
      */
-    JOINS(PlayerStat.JOINS, "Joined the server {0} times.", "&3Joined the server &2{0}&3 times."),
+    JOINS(PlayerStat.JOINS, "Joined the server &f{0}&9 times.", "&9Joined the server &f{0}&9 times."),
 
     /**
-     * Died {0} times on world '{1}'
+     * Died &f{0}&9 times on world '&7{1}&9'
      */
-    DEATHS(PlayerStat.DEATHS, "Died {0} times on world '{1}'.", "&3Died &2{0}&3 times."),
+    DEATHS(PlayerStat.DEATHS, "Died &f{0}&9 times on world '&7{1}&9'.", "&9Died &f{0}&9 times."),
 
     /**
-     * Caught {0} {1} times on world '{2}'
+     * Caught &f{0}&9 &7{1}&9 times on world '{2}'
      */
-    ITEMS_CAUGHT(PlayerStat.ITEMS_CAUGHT, "Caught {0} {1} times on world '{2}'.", "&3Caught" +
-            " &2{0}&3 " + "items."),
+    ITEMS_CAUGHT(PlayerStat.ITEMS_CAUGHT, "Caught &f{0}&9 &7{1}&9 times on world '{2}'.", "&9Caught" +
+            " &f{0}&9 " + "items."),
 
     /**
-     * Placed {0} blocks of {1} on world '{1}'
+     * Placed &f{0}&9 blocks of &7{1}&9 on world '&7{1}&9'
      */
-    BLOCKS_PLACED(PlayerStat.BLOCKS_PLACED, "Placed {0} blocks of {1} on " +
-            "world '{2}'.", "&3Placed &2{0}&3 blocks."),
+    BLOCKS_PLACED(PlayerStat.BLOCKS_PLACED, "Placed &f{0}&9 blocks of &7{1}&9 on " +
+            "world '{2}'.", "&9Placed &f{0}&9 blocks."),
 
     /**
-     * Broke {0} blocks of {1} on world '{2}'.
+     * Broke &f{0}&9 blocks of &7{1}&9 on world '{2}'.
      */
-    BLOCKS_BROKEN(PlayerStat.BLOCKS_BROKEN, "Broke {0} blocks of {1} on " +
-            "world " + "'{2}'.", "&3Broke &2{0}&3 blocks."),
+    BLOCKS_BROKEN(PlayerStat.BLOCKS_BROKEN, "Broke &f{0}&9 blocks of &7{1}&9 on " +
+            "world " + "'{2}'.", "&9Broke &f{0}&9 blocks."),
 
     /**
-     * Killed {0} {1}s on world '{2}'.
+     * Killed &f{0}&9 &7{1}&9s on world '{2}'.
      */
-    KILLS_MOBS(PlayerStat.KILLS_MOBS, "Killed {0} {1}s on world '{2}'.", "&3Killed &2{0}&3 " +
+    KILLS_MOBS(PlayerStat.KILLS_MOBS, "Killed &f{0}&9 &7{1}&9s on world '{2}'.", "&9Killed &f{0}&9 " +
             "mobs."),
 
     /**
-     * Killed {0} {1} times on world '{2}'.
+     * Killed &f{0}&9 &7{1}&9 times on world '{2}'.
      */
-    KILLS_PLAYERS(PlayerStat.KILLS_PLAYERS, "Killed {0} {1} times on world '{2}'.",
-            "&3Killed &2{0}&3" +
+    KILLS_PLAYERS(PlayerStat.KILLS_PLAYERS, "Killed &f{0}&9 &7{1}&9 times on world '{2}'.",
+            "&9Killed &f{0}&9" +
                     " players."),
 
     /**
-     * Played for {0} on world '{1}'.
+     * Played for &f{0}&9 on world '&7{1}&9'.
      */
-    TIME_PLAYED(PlayerStat.TIME_PLAYED, "Played for {0} on world '{1}'.", "&3Played &2{0}&3."),
+    TIME_PLAYED(PlayerStat.TIME_PLAYED, "Played for &f{0}&9 on world '&7{1}&9'.", "&9Played &f{0}&9."),
 
     /**
-     * Eaten {0} {1} on world '{2}'.
+     * Eaten &f{0}&9 &7{1}&9 on world '{2}'.
      */
-    FOOD_EATEN(PlayerStat.FOOD_EATEN, "Eaten {0} {1} on world '{2}'.", "&3Ate &2{0}&3 " +
+    FOOD_EATEN(PlayerStat.FOOD_EATEN, "Eaten &f{0}&9 &7{1}&9 on world '{2}'.", "&9Ate &f{0}&9 " +
             "consumables."),
 
     /**
-     * Took {0} points of damage by {1} on world '{2}'.
+     * Took &f{0}&9 points of damage by &7{1}&9 on world '{2}'.
      */
-    DAMAGE_TAKEN(PlayerStat.DAMAGE_TAKEN, "Took {0} points of damage by {1} on world '{2}'" +
-            ".", "&3Took " +
-            "&2{0}&3 " +
+    DAMAGE_TAKEN(PlayerStat.DAMAGE_TAKEN, "Took &f{0}&9 points of damage by &7{1}&9 on world '{2}'" +
+            ".", "&9Took " +
+            "&f{0}&9 " +
             "points of damage."),
 
     /**
-     * Shorn {0} sheep on world '{1}'.
+     * Shorn &f{0}&9 sheep on world '&7{1}&9'.
      */
-    TIMES_SHORN(PlayerStat.TIMES_SHORN, "Shorn {0} sheep on world '{1}'.", "&3Shorn &2{0}&3 " +
+    TIMES_SHORN(PlayerStat.TIMES_SHORN, "Shorn &f{0}&9 sheep on world '&7{1}&9'.", "&9Shorn &f{0}&9 " +
             "sheep."),
 
     /**
-     * Travelled {0} blocks on world '{1}' by {2}.
+     * Travelled &f{0}&9 blocks on world '&7{1}&9' by {2}.
      */
-    DISTANCE_TRAVELLED(PlayerStat.DISTANCE_TRAVELLED, "Travelled {0} blocks on world " +
-            "'{1}' by {2}.",
-            "&3Travelled " +
-                    "&2{0}&3 blocks."),
+    DISTANCE_TRAVELLED(PlayerStat.DISTANCE_TRAVELLED, "Travelled &f{0}&9 blocks on world " +
+            "'&7{1}&9' by {2}.",
+            "&9Travelled " +
+                    "&f{0}&9 blocks."),
 
     /**
-     * Crafted {0} {1} times on world '{2}'.
+     * Crafted &f{0}&9 &7{1}&9 times on world '{2}'.
      */
-    ITEMS_CRAFTED(PlayerStat.ITEMS_CRAFTED, "Crafted {0} {1} times on world '{2}'.",
-            "&3Crafted " +
-                    "&2{0}&3 items."),
+    ITEMS_CRAFTED(PlayerStat.ITEMS_CRAFTED, "Crafted &f{0}&9 &7{1}&9 times on world '{2}'.",
+            "&9Crafted " +
+                    "&f{0}&9 items."),
 
     /**
-     * Gained {0} points of xp on world '{1}'
+     * Gained &f{0}&9 points of xp on world '&7{1}&9'
      */
-    XP_GAINED(PlayerStat.XP_GAINED, "Gained {0} points of xp on world '{1}'.", "&3Gained " +
-            "&2{0}&3 " +
+    XP_GAINED(PlayerStat.XP_GAINED, "Gained &f{0}&9 points of xp on world '&7{1}&9'.", "&9Gained " +
+            "&f{0}&9 " +
             "points of xp" +
             "."),
 
     /**
-     * Voted {0} times
+     * Voted &f{0}&9 times
      */
-    VOTES(PlayerStat.VOTES, "Voted {0} times.", "&3Voted &2{0}&3 times."),
+    VOTES(PlayerStat.VOTES, "Voted &f{0}&9 times.", "&9Voted &f{0}&9 times."),
 
     /**
-     * Shot {0} arrows on world '{1}'.
+     * Shot &f{0}&9 arrows on world '&7{1}&9'.
      */
-    ARROWS_SHOT(PlayerStat.ARROWS_SHOT, "Shot {0} arrows on world '{1}'" +
-            ".", "&3Shot " +
-            "&2{0}&3 " +
+    ARROWS_SHOT(PlayerStat.ARROWS_SHOT, "Shot &f{0}&9 arrows on world '&7{1}&9'" +
+            ".", "&9Shot " +
+            "&f{0}&9 " +
             "arrows."),
 
     /**
-     * Slept {0} times in a bed on world '{1}'.
+     * Slept &f{0}&9 times in a bed on world '&7{1}&9'.
      */
-    ENTERED_BEDS(PlayerStat.ENTERED_BEDS, "Slept {0} times in a bed on world '{1}'.",
-            "&3Slept &2{0}&3 " +
+    ENTERED_BEDS(PlayerStat.ENTERED_BEDS, "Slept &f{0}&9 times in a bed on world '&7{1}&9'.",
+            "&9Slept &f{0}&9 " +
                     "times."),
 
     /**
-     * Performed {0} {1} times on world '{2}'.
+     * Performed &f{0}&9 &7{1}&9 times on world '{2}'.
      */
-    COMMANDS_PERFORMED(PlayerStat.COMMANDS_PERFORMED, "Performed {0} {1} times on " +
+    COMMANDS_PERFORMED(PlayerStat.COMMANDS_PERFORMED, "Performed &f{0}&9 &7{1}&9 times on " +
             "world '{2}'.",
-            "&3Performed " +
-                    "&2" +
-                    "{0}&3 commands."),
+            "&9Performed " +
+                    "&f" +
+                    "&f{0}&9 commands."),
 
     /**
-     * Kicked {0} times on world '{1}' with reason '{2}'.
+     * Kicked &f{0}&9 times on world '&7{1}&9' with reason '{2}'.
      */
-    TIMES_KICKED(PlayerStat.TIMES_KICKED, "Kicked {0} times on world '{1}' with reason " +
+    TIMES_KICKED(PlayerStat.TIMES_KICKED, "Kicked &f{0}&9 times on world '&7{1}&9' with reason " +
             "'{2}'.",
-            "&3Kicked " +
-                    "&2{0}&3 " +
+            "&9Kicked " +
+                    "&f{0}&9 " +
                     "times."),
 
     /**
-     * Broken {0} {1} times on world '{2}'.
+     * Broken &f{0}&9 &7{1}&9 times on world '{2}'.
      */
-    TOOLS_BROKEN(PlayerStat.TOOLS_BROKEN, "Broken {0} {1} times on world '{2}'.",
-            "&3Broken " +
-                    "&2{0}&3 tools."),
+    TOOLS_BROKEN(PlayerStat.TOOLS_BROKEN, "Broken &f{0}&9 &7{1}&9 times on world '{2}'.",
+            "&9Broken " +
+                    "&f{0}&9 tools."),
 
     /**
-     * Thrown {0} eggs on world '{1}'.
+     * Thrown &f{0}&9 eggs on world '&7{1}&9'.
      */
-    EGGS_THROWN(PlayerStat.EGGS_THROWN, "Thrown {0} eggs on world '{1}'.", "&3Thrown &2{0}&3" +
+    EGGS_THROWN(PlayerStat.EGGS_THROWN, "Thrown &f{0}&9 eggs on world '&7{1}&9'.", "&9Thrown &f{0}&9" +
             " eggs."),
 
     /**
-     * Changed from {0} to {1} {2} times.
+     * Changed from &f{0}&9 to &7{1}&9 {2} times.
      */
-    WORLDS_CHANGED(PlayerStat.WORLDS_CHANGED, "Changed from {0} to {1} {2} times.",
-            "&3Changed worlds " +
-                    "&2{0}&3 times."),
+    WORLDS_CHANGED(PlayerStat.WORLDS_CHANGED, "Changed from &f{0}&9 to &7{1}&9 {2} times.",
+            "&9Changed worlds " +
+                    "&f{0}&9 times."),
 
     /**
-     * Filled {0} buckets on world '{1}'.
+     * Filled &f{0}&9 buckets on world '&7{1}&9'.
      */
-    BUCKETS_FILLED(PlayerStat.BUCKETS_FILLED, "Filled {0} buckets on world '{1}'.",
-            "&3Filled &2{0}&3 " +
+    BUCKETS_FILLED(PlayerStat.BUCKETS_FILLED, "Filled &f{0}&9 buckets on world '&7{1}&9'.",
+            "&9Filled &f{0}&9 " +
                     "buckets."),
 
     /**
-     * Emptied {0} buckets on world '{1}'.
+     * Emptied &f{0}&9 buckets on world '&7{1}&9'.
      */
-    BUCKETS_EMPTIED(PlayerStat.BUCKETS_EMPTIED, "Emptied {0} buckets on world '{1}'.",
-            "&3Emptied " +
-                    "&2{0}&3 " +
+    BUCKETS_EMPTIED(PlayerStat.BUCKETS_EMPTIED, "Emptied &f{0}&9 buckets on world '&7{1}&9'.",
+            "&9Emptied " +
+                    "&f{0}&9 " +
                     "buckets."),
 
     /**
-     * Dropped {0} {1} times on world '{2}'.
+     * Dropped &f{0}&9 &7{1}&9 times on world '{2}'.
      */
-    ITEMS_DROPPED(PlayerStat.ITEMS_DROPPED, "Dropped {0} {1} times on world '{2}'.",
-            "&3Dropped " +
-                    "&2{0}&3 " +
+    ITEMS_DROPPED(PlayerStat.ITEMS_DROPPED, "Dropped &f{0}&9 &7{1}&9 times on world '{2}'.",
+            "&9Dropped " +
+                    "&f{0}&9 " +
                     "items."),
 
     /**
-     * Picked up {0} {1} times on world '{2}'.
+     * Picked up &f{0}&9 &7{1}&9 times on world '{2}'.
      */
-    ITEMS_PICKED_UP(PlayerStat.ITEMS_PICKED_UP, "Picked up {0} {1} times on world '{2}'" +
-            ".", "&3Picked " +
+    ITEMS_PICKED_UP(PlayerStat.ITEMS_PICKED_UP, "Picked up &f{0}&9 &7{1}&9 times on world '{2}'" +
+            ".", "&9Picked " +
             "up " +
-            "&2{0}&3 " +
+            "&f{0}&9 " +
             "items."),
 
     /**
-     * Teleported from {0} to {1} {2} times because of {3}.
+     * Teleported from &f{0}&9 to &7{1}&9 {2} times because of {3}.
      */
-    TELEPORTS(PlayerStat.TELEPORTS, "Teleported from {0} to {1} {2} times because of {3}.",
-            "&3Teleported " +
-                    "&2{0}&3 " +
+    TELEPORTS(PlayerStat.TELEPORTS, "Teleported from &f{0}&9 to &7{1}&9 {2} times because of {3}.",
+            "&9Teleported " +
+                    "&f{0}&9 " +
                     "times."),
 
     /**
-     * Traded with {0} Villagers on world '{1}' for item {2}.
+     * Traded with &f{0}&9 Villagers on world '&7{1}&9' for item {2}.
      */
-    VILLAGER_TRADES(PlayerStat.VILLAGER_TRADES, "Traded with {0} Villagers on world " +
-            "'{1}' for item {2}" +
+    VILLAGER_TRADES(PlayerStat.VILLAGER_TRADES, "Traded with &f{0}&9 Villagers on world " +
+            "'&7{1}&9' for item {2}" +
             ".",
-            "&3Traded " +
-                    "with &2{0}&3 Villagers."),;
+            "&9Traded " +
+                    "with &f{0}&9 Villagers."),;
 
     private static FileConfiguration file;
     private String highDetailDesc, totalDesc;

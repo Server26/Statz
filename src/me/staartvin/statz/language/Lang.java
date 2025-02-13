@@ -41,13 +41,13 @@ public enum Lang {
 	 */
 	INCORRECT_STAT_TYPE("incorrect-stat-type", "&4{0} is not a correct stat!"),
 	/**
-	 * &e---- [Stat {0} of {1}] ----
+	 * &9---- [Stat {0} of {1}] ----
 	 */
-	SPECIFIC_STAT_HEADER("specific-stat-header", "&e---- [Stat {0} of {1}] ----"),
+	SPECIFIC_STAT_HEADER("specific-stat-header", "&9---- [Stat {0} of {1}] ----"),
 	/**
-	 * &eStatz is currently hooked and listening to the following plugins:
+	 * &9Statz is currently hooked and listening to the following plugins:
 	 */
-	STATZ_HOOKED_AND_LISTENING("statz-hooked-and-listening", "&eStatz is currently hooked and listening to the following plugins:"),
+	STATZ_HOOKED_AND_LISTENING("statz-hooked-and-listening", "&9Statz is currently hooked and listening to the following plugins:"),
 	/**
 	 * &4Statz could not detect {0} running on this server!
 	 */
@@ -57,9 +57,9 @@ public enum Lang {
 	 */
 	COMMAND_NOT_RECOGNIZED("command-not-recognized", "&4This command was not recognized!"),
 	/**
-	 * &eUse '/statz help' for a list of commands.
+	 * &9Use '/statz help' for a list of commands.
 	 */
-	STATZ_HELP_COMMAND("statz-help-command", "&eUse '/statz help' for a list of commands."),
+	STATZ_HELP_COMMAND("statz-help-command", "&9Use '/statz help' for a list of commands."),
 	
 	/**
 	 * &4You do not have the permission ({0}) to perform this command."
@@ -67,9 +67,9 @@ public enum Lang {
 	INSUFFICIENT_PERMISSIONS("insufficient-permissions", "&4You do not have the permission ({0}) to perform this command."),
 	
 	/**
-	 * &4Incorrect command usage! Try &e{0}
+	 * &4Incorrect command usage! Try &9{0}
 	 */
-	INCORRECT_COMMAND_USAGE("incorrect-command-usage", "&4Incorrect command usage! Try &e{0}");
+	INCORRECT_COMMAND_USAGE("incorrect-command-usage", "&4Incorrect command usage! Try &9{0}");
 
 	private static FileConfiguration LANG;
 

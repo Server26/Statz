@@ -328,7 +328,7 @@ public class DataManager {
                 BaseComponent[] spigotMessage = new ComponentBuilder(messageString)
                         .event(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/statz list " + playerName + " " + statType))
                         .event(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("Click for more info about " + statType)
-                                .color(ChatColor.GOLD.asBungee()).create()))
+                                .color(ChatColor.GRAY.asBungee()).create()))
                         .create();
                 messagesSpigot.add(spigotMessage);
             } else {
@@ -340,7 +340,7 @@ public class DataManager {
         int pages = (int) Math.ceil((double) (canShowSpigotMessages ? messagesSpigot.size() : messages.size()) / messagesPerPage);
         if (pageNumber >= pages || pageNumber < 0) pageNumber = 0;
 
-        sender.sendMessage(ChatColor.YELLOW + "---------------- [Statz of " + playerName + "] ----------------");
+        sender.sendMessage(ChatColor.BLUE + "---------------- [Statz of " + playerName + "] ----------------");
         for (int j = 0; j < messagesPerPage; j++) {
             int index = (pageNumber * messagesPerPage) + j;
             if (canShowSpigotMessages) {
@@ -354,20 +354,20 @@ public class DataManager {
         }
 
         BaseComponent[] pageClicker = new ComponentBuilder("<<< ")
-                .color(ChatColor.GOLD.asBungee())
+                .color(ChatColor.GRAY.asBungee())
                 .event(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/statz list " + playerName + " " + Math.max(pageNumber, 0)))
-                .append("Page ", ComponentBuilder.FormatRetention.NONE).color(ChatColor.DARK_AQUA.asBungee())
-                .append(String.valueOf(pages == 0 ? pageNumber : pageNumber + 1), ComponentBuilder.FormatRetention.NONE).color(ChatColor.GREEN.asBungee())
-                .append(" of " + pages, ComponentBuilder.FormatRetention.NONE).color(ChatColor.DARK_AQUA.asBungee())
-                .append(" >>>", ComponentBuilder.FormatRetention.NONE).color(ChatColor.GOLD.asBungee())
+                .append("Page ", ComponentBuilder.FormatRetention.NONE).color(ChatColor.BLUE.asBungee())
+                .append(String.valueOf(pages == 0 ? pageNumber : pageNumber + 1), ComponentBuilder.FormatRetention.NONE).color(ChatColor.WHITE.asBungee())
+                .append(" of " + pages, ComponentBuilder.FormatRetention.NONE).color(ChatColor.BLUE.asBungee())
+                .append(" >>>", ComponentBuilder.FormatRetention.NONE).color(ChatColor.GRAY.asBungee())
                 .event(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/statz list " + playerName + " " + Math.min(pageNumber + 1, pages - 1))).create();
 
         if (canShowSpigotMessages) {
             Player player = (Player) sender;
             player.spigot().sendMessage(pageClicker);
         } else {
-            sender.sendMessage(ChatColor.GOLD + "<<< " + ChatColor.DARK_AQUA + "Page " + ChatColor.GREEN
-                    + (pageNumber + 1) + ChatColor.DARK_AQUA + " of " + pages + ChatColor.GOLD + " >>>");
+            sender.sendMessage(ChatColor.GRAY + "<<< " + ChatColor.BLUE + "Page " + ChatColor.WHITE
+                    + (pageNumber + 1) + ChatColor.BLUE + " of " + pages + ChatColor.GRAY + " >>>");
         }
     }
 
