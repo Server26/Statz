@@ -432,7 +432,7 @@ public class StatzUtil {
     }
 
     public static String getInfoString(Query query, PlayerStat statType, String playerName) {
-        StringBuilder builder = new StringBuilder(ChatColor.GOLD + playerName + ChatColor.DARK_AQUA + " ");
+        StringBuilder builder = new StringBuilder(ChatColor.BLUE + playerName + ChatColor.GRAY + " ");
 
         if (statType.equals(PlayerStat.ARROWS_SHOT)) {
             builder.append(createStringWithParams("shot {0} arrows on world '{1}'",

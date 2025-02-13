@@ -23,7 +23,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <dir>${project.build.directory}</dir>
-        <revision>1.6.3-SNAPSHOT-1000</revision>
+        <revision>1.6.3-SNAPSHOT-1001</revision>
     </properties>
 
     <build>
